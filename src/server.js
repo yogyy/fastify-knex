@@ -15,14 +15,19 @@ const __dirname = path.dirname(__filename);
  */
 async function plugins(server, opts) {
   server
+    .register(import("@fastify/sensible"))
     .register(import("@fastify/formbody"))
     .register(autoLoad, {
       dir: path.join(__dirname, "plugins"),
+      dirNameRoutePrefix: false,
       options: Object.assign({}, opts),
     })
     .register(autoLoad, {
       dir: path.join(__dirname, "routes"),
       dirNameRoutePrefix: true,
+      autoHooks: true,
+      autoHooksPattern: /.*hook(\.js|\.cjs|\.ts)$/i,
+      cascadeHooks: true,
       options: { prefix: "/api" },
     });
 

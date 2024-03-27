@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js",
-    "dev": "fastify start -w -l info -P app.js",
+    "dev": "fastify start -w -l info -P src/server.js",
     "db:migrate": "knex migrate:make",
     "db:push": "knex migrate:up",
     "db:drop": "knex migrate:down"
@@ -19,6 +19,7 @@
     "@fastify/autoload": "^5.8.0",
     "@fastify/formbody": "^7.4.0",
     "@fastify/jwt": "^8.0.0",
+    "@fastify/sensible": "^5.5.0",
     "dotenv": "^16.4.5",
     "fastify": "^4.26.2",
     "fastify-cli": "^6.1.1",
