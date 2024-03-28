@@ -1,6 +1,6 @@
 import autoLoad from "@fastify/autoload";
 import fp from "fastify-plugin";
-import path, { relative } from "node:path";
+import path from "node:path";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -16,7 +16,6 @@ const __dirname = path.dirname(__filename);
 async function plugins(server, opts) {
   server
     .register(import("@fastify/sensible"))
-    .register(import("@fastify/formbody"))
     .register(autoLoad, {
       dir: path.join(__dirname, "plugins"),
       dirNameRoutePrefix: false,
